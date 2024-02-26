@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  rtsp-server:
+    image: bluenviron/mediamtx:1.5.1-ffmpeg
+    entrypoint: ["/bin/sh", "-c", "cd /home && ./run.sh"]
+    restart: unless-stopped
+    volumes:
+      - ./rtsp-server:/home
+    ports:
+      - "8554:8554"
