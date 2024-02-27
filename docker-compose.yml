@@ -9,3 +9,22 @@ services:
       - ./rtsp-server:/home
     ports:
       - "8554:8554"
+
+  inference-server:
+    build: inference-server
+    restart: unless-stopped
+    volumes:
+      - ./inference-server/weights:/home/app/weights
+      - $HOST_OUTPUT_FOLDER_PATH:/home/app/outputs
+    environment:
+        - HOST_OUTPUT_FOLDER_PATH=$HOST_OUTPUT_FOLDER_PATH
+        - WEIGHT_PATH=/home/app/weights/$WEIGHT_FILE
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+              count: 1

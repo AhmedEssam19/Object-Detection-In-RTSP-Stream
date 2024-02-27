@@ -12,7 +12,7 @@ app = Flask(__name__)
 @app.route("/detections", methods=['GET'])
 def get_detections():
     model = YOLO(os.getenv("WEIGHT_PATH"), task="detection")
-    cap = cv2.VideoCapture("rtsp://localhost:8554/stream")
+    cap = cv2.VideoCapture("rtsp://rtsp-server:8554/stream")
     ret, frame = cap.read()
     results = model(frame)
     filename = str(uuid4()) + ".jpg"
