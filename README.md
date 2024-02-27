@@ -10,7 +10,7 @@ The project is divided into three parts:
 2. Inference Server: A simple Flask server that uses YOLOv5 to detect objects in the RTSP stream and saves the image with detection boxes when receiving `GET` request. The server acts as a RTSP listener. Additionally, Gunicorn is used as an application server for efficiency.
 3. Client: A simple Python script that sends `GET` request to the Inference Server to get the path of the saved image.
 
-![Solution Design](http://url/to/img.png)
+![Solution Design](https://github.com/AhmedEssam19/Object-Detection-In-RTSP-Stream/blob/master/diagram.png)
 
 ## Usage
 1. Clone the repository.
