@@ -28,3 +28,6 @@ services:
             - driver: nvidia
               capabilities: [ gpu ]
               count: 1
+
+    depends_on:
+      - rtsp-server
